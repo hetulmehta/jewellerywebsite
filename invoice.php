@@ -8,6 +8,7 @@ include("auth_session.php");
     require 'includes/SMTP.php';
 
     use PHPMailer\PHPMailer\PHPMailer;
+    require '../vendor/autoload.php';
     use PHPMailer\PHPMailer\Exception;
     use PHPMailer\PHPMailer\SMTP;
 
@@ -82,7 +83,9 @@ if (isset($_POST['submit'])) {
                     <div class="logotype">EMBELORN</div>
                 </td>
                 <td width="300px">
-                    <div style="background: #ffd9e8;border-left: 15px solid #fff;padding-left: 30px;font-size: 26px;font-weight: bold;letter-spacing: -1px;height: 73px;line-height: 75px;">Order invoice</div>
+                    <div
+                        style="background: #ffd9e8;border-left: 15px solid #fff;padding-left: 30px;font-size: 26px;font-weight: bold;letter-spacing: -1px;height: 73px;line-height: 75px;">
+                        Order invoice</div>
                 </td>
                 <td></td>
             </tr>
@@ -110,7 +113,9 @@ if (isset($_POST['submit'])) {
                     <table>
                         <tr>
                             <td style="vertical-align: text-top;">
-                                <div style="background: #ffd9e8 url(https://cdn0.iconfinder.com/data/icons/commerce-line-1/512/comerce_delivery_shop_business-07-128.png);width: 50px;height: 50px;margin-right: 10px;background-position: center;background-size: 42px;"></div>
+                                <div
+                                    style="background: #ffd9e8 url(https://cdn0.iconfinder.com/data/icons/commerce-line-1/512/comerce_delivery_shop_business-07-128.png);width: 50px;height: 50px;margin-right: 10px;background-position: center;background-size: 42px;">
+                                </div>
                             </td>
                             <td>
                                 <strong>Delivery</strong><br>
@@ -126,7 +131,9 @@ if (isset($_POST['submit'])) {
                     <table>
                         <tr>
                             <td style="vertical-align: text-top;">
-                                <div style="background: #ffd9e8 url(https://cdn4.iconfinder.com/data/icons/app-custom-ui-1/48/Check_circle-128.png) no-repeat;width: 50px;height: 50px;margin-right: 10px;background-position: center;background-size: 25px;"></div>
+                                <div
+                                    style="background: #ffd9e8 url(https://cdn4.iconfinder.com/data/icons/app-custom-ui-1/48/Check_circle-128.png) no-repeat;width: 50px;height: 50px;margin-right: 10px;background-position: center;background-size: 25px;">
+                                </div>
                             </td>
                             <td>
                                 <strong>Delivery</strong><br>
@@ -147,7 +154,9 @@ if (isset($_POST['submit'])) {
                 <td>
             </tr>
         </table><br>
-        <div style="background: #ffd9e8 url(https://cdn4.iconfinder.com/data/icons/basic-ui-2-line/32/shopping-cart-shop-drop-trolly-128.png) no-repeat;width: 50px;height: 50px;margin-right: 10px;background-position: center;background-size: 25px;float: left; margin-bottom: 15px;"></div>
+        <div
+            style="background: #ffd9e8 url(https://cdn4.iconfinder.com/data/icons/basic-ui-2-line/32/shopping-cart-shop-drop-trolly-128.png) no-repeat;width: 50px;height: 50px;margin-right: 10px;background-position: center;background-size: 25px;float: left; margin-bottom: 15px;">
+        </div>
         <h3>Your articles</h3>
 
         <table width="100%" style="border-collapse: collapse;border-bottom:1px solid #eee;">
@@ -175,11 +184,13 @@ if (isset($_POST['submit'])) {
                 }
                 $row3 = mysqli_fetch_assoc($result3);
             ?>
-                <tr>
-                    <td class="row"><span style="color:#777;font-size:11px;"><?php echo $row3['item_code'] ?></span><br><?php echo $row3["name"] ?></td>
-                    <td class="row"><?php echo $r['qty'] ?><span style="color:#777">X</span> <?php echo $r['price'] ?></td>
-                    <td class="row"><?php echo $tots ?></td>
-                </tr>
+            <tr>
+                <td class="row"><span
+                        style="color:#777;font-size:11px;"><?php echo $row3['item_code'] ?></span><br><?php echo $row3["name"] ?>
+                </td>
+                <td class="row"><?php echo $r['qty'] ?><span style="color:#777">X</span> <?php echo $r['price'] ?></td>
+                <td class="row"><?php echo $tots ?></td>
+            </tr>
             <?php endwhile; ?>
         </table><br>
         <table width="100%" style="background:#eee;padding:20px;">
@@ -202,7 +213,10 @@ if (isset($_POST['submit'])) {
                 </td>
             </tr>
         </table>
-        <div class="alert">To ensure your safety, the Delivery Agent will drop the package at your doorstep, ring the doorbell and then move back 2 meters while waiting for you to collect your package. If you are in a containment zone, the agent will call you and request you to collect your package from the nearest accessible point while following the same No-Contact delivery process. </div>
+        <div class="alert">To ensure your safety, the Delivery Agent will drop the package at your doorstep, ring the
+            doorbell and then move back 2 meters while waiting for you to collect your package. If you are in a
+            containment zone, the agent will call you and request you to collect your package from the nearest
+            accessible point while following the same No-Contact delivery process. </div>
         <div class="socialmedia">We hope to see you again soon <br><strong><small>EMBELORN</small></strong></div>
     </div><!-- container -->
     <?php 
@@ -211,9 +225,8 @@ $mail->Host = "smtp.gmail.com";
 $mail->SMTPAuth = "true";
 $mail->SMTPSecure = "ssl";
 $mail->Port = 465;
-
-$mail->Username = ;
-$mail->Password = ;
+$mail->Username = $_ENV['EMAIL'];
+$mail->Password = $_ENV["psw"];
 $mail->isHTML(TRUE);
 $mail->Subject = "Order Invoice for ORDER#".$order_id;
 
