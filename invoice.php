@@ -212,8 +212,8 @@ $mail->SMTPAuth = "true";
 $mail->SMTPSecure = "ssl";
 $mail->Port = 465;
 
-$mail->Username = "hetulmehta08@gmail.com";
-$mail->Password = "Hetul@2001";
+$mail->Username = ;
+$mail->Password = ;
 $mail->isHTML(TRUE);
 $mail->Subject = "Order Invoice for ORDER#".$order_id;
 
