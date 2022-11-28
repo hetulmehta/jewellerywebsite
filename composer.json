@@ -1,0 +1,17 @@
+{
+    "name": "hetul/miniproject",
+    "require": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hetul\\Miniproject\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "hetulmehta",
+            "email": "hetulmehta08@gmail.com"
+        }
+    ]
+}
